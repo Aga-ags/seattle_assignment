@@ -32,5 +32,12 @@ for measurement in Seattle_measurements:
     index = int(month) - 1                     # the month the measurement was made in corresponds to the index on the list of monthly total percipitation
     precipitation_per_month_Seattle[index] += measurement["value"]      # calculates the total percipitation per month in the precipitation_per_month_Seattle list
 
+results = {}
+Seattle_resuls = {}
+results["Seattle"] = Seattle_resuls
+Seattle_resuls["station"] = "GHCND:US1WAKG0038"
+Seattle_resuls["state"] = "WA"
+Seattle_resuls["total_monthly_precipitation"] = precipitation_per_month_Seattle
+
 with open("results.json","w") as file:
-	json.dump(precipitation_per_month_Seattle,file, indent=4)           # saves the results as a json file
+	json.dump(results,file, indent=4)           # saves the results as a json file
